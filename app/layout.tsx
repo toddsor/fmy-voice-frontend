@@ -14,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full ${publicSans400.className}`}>
-      <body className="h-full">{children}</body>
+      <body className="h-full">
+        <div className="content-container">{children}</div>
+      </body>
     </html>
   );
 }

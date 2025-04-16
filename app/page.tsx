@@ -50,9 +50,9 @@ export default function Page() {
   }, [room]);
 
   return (
-    <main data-lk-theme="default" className="h-full grid content-center bg-[var(--lk-bg)]">
+    <main data-lk-theme="default" className="h-full w-full">
       <RoomContext.Provider value={room}>
-        <div className="lk-room-container max-h-[90vh]">
+        <div className="content-container">
           <SimpleVoiceAssistant onConnectButtonClicked={onConnectButtonClicked} />
         </div>
       </RoomContext.Provider>
@@ -64,23 +64,25 @@ function SimpleVoiceAssistant(props: { onConnectButtonClicked: () => void }) {
   const { state: agentState } = useVoiceAssistant();
   return (
     <>
-      <AnimatePresence>
-        {agentState === "disconnected" && (
-          <motion.button
-            initial={{ opacity: 0, top: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, top: "-10px" }}
-            transition={{ duration: 1, ease: [0.09, 1.04, 0.245, 1.055] }}
-            className="uppercase absolute left-1/2 -translate-x-1/2 px-4 py-2 bg-white text-black rounded-md"
-            onClick={() => props.onConnectButtonClicked()}
-          >
-            Start a conversation
-          </motion.button>
-        )}
-        <div className="w-3/4 lg:w-1/2 mx-auto h-full">
+      <div className="transcription-container">
+        <AnimatePresence>
+          {agentState === "disconnected" && (
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1, ease: [0.09, 1.04, 0.245, 1.055] }}
+              className="uppercase px-6 py-3 bg-[#191970] hover:bg-[#1E1E8A] text-white rounded-lg shadow-md font-medium"
+              onClick={() => props.onConnectButtonClicked()}
+            >
+              Start a conversation
+            </motion.button>
+          )}
+        </AnimatePresence>
+        <div className="w-3/4 lg:w-1/2 mx-auto">
           <TranscriptionView />
         </div>
-      </AnimatePresence>
+      </div>
 
       <RoomAudioRenderer />
       <NoAgentNotification state={agentState} />
