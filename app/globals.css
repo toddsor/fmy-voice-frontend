@@ -5,40 +5,45 @@
 :root {
   --lk-va-bar-width: 72px;
   --lk-control-bar-height: unset;
-  --lk-bg: #DCDCDC;
-  --lk-bg-secondary: #D3D3D3;
+  --lk-bg: theme("colors.primary.DEFAULT");
+  --lk-bg-secondary: theme("colors.primary.hover");
 }
 
 body {
-  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 50%, #f0f8ff 100%);
+  background: theme("colors.background");
   min-height: 100vh;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  color: white;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
 }
 
 main {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
 }
 
 .content-container {
   width: 100%;
-  max-width: 768px;
-  background: #DCDCDC;
-  margin: 0;
+  max-width: 480px;
+  height: 100vh;
+  background: theme("colors.primary.DEFAULT");
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
+  border: none;
+  padding: 1rem;
 }
 
 .agent-visualizer > .lk-audio-bar {
@@ -50,14 +55,44 @@ main {
 }
 
 .lk-disconnect-button {
-  @apply h-[36px] hover:bg-[#1E1E8A] hover:text-white bg-[#191970] text-white border-[#191970];
+  @apply h-[36px] hover:bg-accent-hover bg-accent text-primary border-accent;
 }
 
 .transcription-container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   position: relative;
+  padding: 1.5rem;
+}
+
+/* Add styles for the reminder card */
+.reminder-card {
+  @apply bg-card p-4 rounded-lg shadow-md w-full max-w-md border-0;
+}
+
+/* Navigation container at the bottom */
+.nav-container {
+  width: 100%;
+  padding: 1rem 1rem 2rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+/* Style for the Next/Back buttons */
+.nav-button {
+  @apply bg-accent text-black font-medium py-4 px-12 rounded-full w-full max-w-[200px] text-center transition-all duration-200 border-0;
+}
+
+.nav-button:hover {
+  @apply brightness-105;
+}
+
+/* Style for the time selector */
+.time-selector {
+  @apply bg-card hover:bg-card-hover p-4 rounded-lg flex items-center justify-between w-full max-w-md cursor-pointer transition-colors duration-200 border-0;
 }

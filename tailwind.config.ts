@@ -6,7 +6,26 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {},
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: "#00A884",
+          hover: "#009775",
+        },
+        accent: {
+          DEFAULT: "#FFD75C",
+          hover: "#FFE17F",
+        },
+        card: {
+          DEFAULT: "#FFFFFF",
+          hover: "#F5F5F5",
+        },
+        background: "#E8F1F8",
+      },
+    },
+  },
   plugins: [],
 };
+
 export default config;

@@ -65,20 +65,70 @@ function SimpleVoiceAssistant(props: { onConnectButtonClicked: () => void }) {
   return (
     <>
       <div className="transcription-container">
-        <AnimatePresence>
-          {agentState === "disconnected" && (
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1, ease: [0.09, 1.04, 0.245, 1.055] }}
-              className="uppercase px-6 py-3 bg-[#191970] hover:bg-[#1E1E8A] text-white rounded-lg shadow-md font-medium"
-              onClick={() => props.onConnectButtonClicked()}
-            >
-              Start a conversation
-            </motion.button>
-          )}
-        </AnimatePresence>
+        <div className="fixed top-4 bottom-40 w-[480px] left-1/2 -translate-x-1/2">
+          <div className="h-full px-4 overflow-y-auto">
+            <p className="text-white/90 text-base leading-relaxed pr-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <br />
+              <br />
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+              officia deserunt mollit anim id est laborum.
+              <br />
+              <br />
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+              laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+              architecto beatae vitae dicta sunt explicabo.
+              <br />
+              <br />
+              Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+              consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+              <br />
+              <br />
+              Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+              velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
+              aliquam quaerat voluptatem.
+              <br />
+              <br />
+              Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit
+              laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
+              reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.
+              <br />
+              <br />
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <br />
+              <br />
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+              officia deserunt mollit anim id est laborum.
+              <br />
+              <br />
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+              laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+              architecto beatae vitae dicta sunt explicabo.
+            </p>
+          </div>
+        </div>
+        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-10">
+          <AnimatePresence>
+            {agentState === "disconnected" && (
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1, ease: [0.09, 1.04, 0.245, 1.055] }}
+                className="nav-button rounded-md text-lg !max-w-[240px]"
+                onClick={() => props.onConnectButtonClicked()}
+              >
+                Start a conversation
+              </motion.button>
+            )}
+          </AnimatePresence>
+        </div>
         <div className="w-3/4 lg:w-1/2 mx-auto">
           <TranscriptionView />
         </div>
@@ -89,6 +139,22 @@ function SimpleVoiceAssistant(props: { onConnectButtonClicked: () => void }) {
       <div className="fixed bottom-0 w-full px-4 py-2">
         <ControlBar />
       </div>
+
+      <style jsx global>{`
+        .transcription-container ::-webkit-scrollbar {
+          width: 6px;
+        }
+        .transcription-container ::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .transcription-container ::-webkit-scrollbar-thumb {
+          background-color: rgba(255, 255, 255, 0.3);
+          border-radius: 3px;
+        }
+        .transcription-container ::-webkit-scrollbar-thumb:hover {
+          background-color: rgba(255, 255, 255, 0.5);
+        }
+      `}</style>
     </>
   );
 }
